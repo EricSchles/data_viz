@@ -28,6 +28,7 @@ function buildGraph(response) {
 }
 
 function getArticles() {
+  //This returns JSON
   const resp = axios.get('http://localhost:5000/api')
     .then(function (response) {
       console.log(response);
