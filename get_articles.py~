@@ -4,20 +4,20 @@ import requests
 import pandas as pd
 
 def xor(v1, v2):
-    if v1 and v2:
-        return False
-    if v1 and not(v2):
-        return True
-    if not(v1) and v2:
-        return True
-    if not(v1) and not(v2):
-        return False
+	if v1 and v2:
+		return False
+	if v1 and not(v2):
+		return True
+	if not(v1) and v2:
+		return True
+	if not(v1) and not(v2):
+		return False
 
 def found(val):
-    if val == -1:
-        return False
-    else:
-        return True
+	if val == -1:
+		return False
+	else:
+		return True
 
 API_KEY = 'e750e0189ede4b6b8b1a766b8523b29a'
 
@@ -35,20 +35,15 @@ mention_count = {}.fromkeys(list_of_words, 0)
 link_mentions = {}.fromkeys(list_of_words, empty_set)
 
 entries = resp.json()
-entries.update(resp2.json())
-entries.update(resp3.json())
-entries.update(resp4.json())
-entries.update(resp5.json())
-entries.update(resp6.json())
 
 for article in entries['articles']:
-    for word in list_of_words:
-        title_found = found(article['title'].find(word))
-        description_found = found(article['description'].find(word))
-        if xor(title_found, description_found):
-            mention_count[word] += 1
-            link_mentions[word].add(article['url'])
-
+	for word in list_of_words:
+		title_found = found(article['title'].find(word))
+		print(title_found)
+		description_found = found(article['description'].find(word))
+		if xor(title_found, description_found):
+			mention_count[word] += 1
+			link_mentions[word].add(article['url'])
 print(mention_count)
 
 
