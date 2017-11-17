@@ -1,5 +1,7 @@
 
 (() => {
+
+function buildGraph() {
 'use strict';
 
   var chart = c3.generate({
@@ -22,4 +24,23 @@
           }
       }
   });
+}
+
+function getArticles() {
+  const resp = axios.get()
+    .then(function (response) {
+      console.log(response);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+
+  // parse
+  // return parsed response
+}
+
+
+buildGraph(getArticles());
+
 })();
+
