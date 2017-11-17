@@ -59,9 +59,12 @@ def fetch_news():
     return mention_count, link_mentions
 
     
-@app.route("/api")
+@app.route("/api", methods=["GET", "POST"])
 def api():
     mention_count, link_mentions = fetch_news()
     return jsonify(mention_count)
     
 
+@app.route("/", methods=["GET", "POST"])
+def index():
+    return render_template("index.html")
