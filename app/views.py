@@ -58,12 +58,15 @@ def fetch_news():
     link_mentions["timestamp"] = str(datetime.now())
     return mention_count, link_mentions
 
+
 mention_collection = []
 @app.route("/api", methods=["GET", "POST"])
 def api():
-    mention_collection.append(fetch_news())
+    mention_count, _ = fetch_news()
+    mention_collection.append(mention_count)
     #return jsonify(mention_count)
     return jsonify(mention_collection)
+
 
 @app.route("/", methods=["GET", "POST"])
 def index():
